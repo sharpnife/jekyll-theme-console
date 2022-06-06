@@ -1,3 +1,6 @@
+<!-- This website is powered by jekyll(https://jekyllrb.com/) and
+    https://github.com/b2a3e8/jekyll-theme-console/ under the MIT
+    License(https://github.com/jekyll/jekyll/blob/master/LICENSE)-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +11,41 @@
   {% if page.robots %}
     <meta name="robots" content="{{page.robots}}" />
   {% endif %}
+    <link id="light" rel="stylesheet" type="text/css" href="{{ "/assets/main-light.css" | relative_url }}">
+          <script>
+              function setTheme() {
+                    var theme = localStorage.getItem("theme");
+                    if (theme == null) {
+                          theme = dark;
+                          localStorage.setItem("theme", "dark");
+                    }
+                    var link = document.getElementById('light');
+                    if (theme == "dark") {
+                        link.id = theme;
+                        link.href = "{{ "/assets/main-dark.css" | relative_url }}";
+                    }
+              }
+              function toggleTheme() {
+                    var light = "light";
+                    var dark = "dark";
+                    var newTheme = dark;
+                    var curTheme = light;
+                    if (document.getElementById(dark)) newTheme = light, curTheme = dark;
+                    var link = document.getElementById(curTheme);
+                    if (newTheme == dark) {
+                          link.id = dark;
+                          link.href = "{{ "/assets/main-dark.css" | relative_url }}";
+                          localStorage.setItem("theme", "dark");
+                    } else {
+                          link.id = light;
+                          link.href = "{{ "/assets/main-light.css" | relative_url }}";
+                          localStorage.setItem("theme", "light");
+                    }
+              }
+              setTheme();
+          </script>
 
+<!--
   {%- if site.listen_for_clients_preferred_style -%}
     <link rel="stylesheet" type="text/css" href="{{ "/assets/main.css" | relative_url }}">
   {%- else -%}
@@ -23,5 +60,5 @@
 
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
-  {%- endif -%}
+    {%- endif -%} --!>
 </head>
