@@ -11,18 +11,16 @@
   {% if page.robots %}
     <meta name="robots" content="{{page.robots}}" />
   {% endif %}
-    <link id="light" rel="stylesheet" type="text/css" href="{{ "/assets/main-light.css" | relative_url }}">
+    <link id="dark" rel="stylesheet" type="text/css" href="{{ "/assets/main-dark.css" | relative_url }}">
           <script>
               function setTheme() {
+                    var link = document.getElementById("dark");
                     var theme = localStorage.getItem("theme");
                     if (theme == null) {
-                          theme = dark;
                           localStorage.setItem("theme", "dark");
-                    }
-                    var link = document.getElementById('light');
-                    if (theme == "dark") {
+                    } else if (theme == "light") {
                         link.id = theme;
-                        link.href = "{{ "/assets/main-dark.css" | relative_url }}";
+                        link.href = "{{ "/assets/main-light.css" | relative_url }}";
                     }
               }
               function toggleTheme() {
