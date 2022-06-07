@@ -6,7 +6,7 @@
  */
 $base-font-family:     'Source Code Pro', monospace !default;
 $base-font-size:       23.5px !default;
-$mobile-font-size:     12px !default;
+$mobile-font-size:     16px !default;
 $base-line-height:     2.0 !default;
 $container-width:      100% !default;
 $container-max-width:  800px !default;
@@ -31,7 +31,18 @@ margin-top: 30px; margin-bottom: 22px; font-weight: bold;  color: var(--text-col
 p, ul, ol { margin: 0px;  color: var(--text-color); }
 a { text-decoration: underline;  color: var(--link-color); }
 a:hover { color: var(--background-color); background-color: var(--base-color); }
-@media only screen and (max-device-width: 500px) { * { font-size: $mobile-font-size !important; } }
+@media only screen and (max-device-width: 500px) { 
+    * { 
+        font-size: $mobile-font-size !important; 
+    } 
+
+}
+
+@media only screen and (max-device-width: 900px) { 
+    main {
+        padding: 22px;
+    }
+}
 
 /**
  * Layout
@@ -86,7 +97,8 @@ details[open] summary {
  * Header/Navigation
  */
 .menu { border-top: var(--border);  border-bottom: var(--border);  margin-bottom: 25px; }
-.menu ul { margin-top: 12px;  margin-bottom: 12px;  padding-left: 0px;  list-style-type: none;  text-align: right; }
+.menu ul { margin-top: 12px;  margin-bottom: 12px;  padding-left: 0px;
+padding-right: 22px; list-style-type: none;  text-align: right; }
 .menu ul li { display: inline;  margin-left: 30px; }
 .menu ul li a { text-decoration: none;  color: var(--text-color); }
 .menu ul li a:hover { text-decoration: none; color: var(--background-color); background-color: var(--base-color); }
